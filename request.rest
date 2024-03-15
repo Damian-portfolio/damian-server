@@ -1,0 +1,35 @@
+GET http://localhost:5000/user
+
+### 
+
+POST http://localhost:5000/signup
+Content-Type: application/json
+
+{
+    "email": "Mishima@gmail.com",
+    "password": "GodBlessNigeria"
+}
+
+### 
+
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "Mishima@gmail.com",
+    "password": "GodBlessNigeria"
+}
+
+### 
+
+Get http://localhost:5000/getMessages
+
+### 
+
+POST http://localhost:5000/messages
+Content-Type: application/json
+
+{
+    "clientEmail": "olaLoveBeans@gmail.com",
+    "clientMsg": "Hello world from the world of the world of the world of the world of the world of the world of the world of"
+}
