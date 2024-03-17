@@ -1,16 +1,18 @@
 GET http://localhost:5000/user
 
-### 
+### Signup
 
 POST http://localhost:5000/signup
 Content-Type: application/json
 
 {
+    "firstname": "Benedict",
+    "lastname": "Gabriel",
     "email": "Mishima@gmail.com",
     "password": "GodBlessNigeria"
 }
 
-### 
+### Login
 
 POST http://localhost:5000/login
 Content-Type: application/json
@@ -20,14 +22,16 @@ Content-Type: application/json
     "password": "GodBlessNigeria"
 }
 
-### 
+### Get All Messages
 
 Get http://localhost:5000/getMessages
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWY2NjRkOTBhNzk0YjlmZWE3MTA5NzMiLCJpYXQiOjE3MTA2NDY0OTN9.zRYvCTirSIuYTYattLnIUwRpUAwcymsdklqJ8E-xZ4c
 
-### 
+### Post Message
 
 POST http://localhost:5000/messages
 Content-Type: application/json
+# Copy the token from the login response and paste it in the Authorization header
 
 {
     "clientEmail": "olaLoveBeans@gmail.com",
