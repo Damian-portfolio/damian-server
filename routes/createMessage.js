@@ -12,9 +12,7 @@ const sendMessage = async (req, res) => {
 
     const savedMsg = await newMsg.save();
 
-    res
-      .status(200)
-      .json({ message: "Message sent successfully", msg: savedMsg });
+    res.status(200).json({ message: "Message sent successfully", msg: savedMsg });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

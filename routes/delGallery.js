@@ -11,7 +11,8 @@ const delImage = async (req, res) => {
     }
 
     res.status(200).json({ message: "Image deleted successfully", deletedImg });
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Error deleting image:", error);
     res.status(500).json({ message: "Internal server error" });
   }

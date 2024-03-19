@@ -12,6 +12,7 @@ const getMsg = require("./routes/getMessages");
 const delImage = require("./routes/delGallery");
 const connection = require("./config/connection");
 const authToken = require("./middleware/authToken");
+const multer = require("multer")
 
 //Getting our app
 const app = express();
@@ -19,6 +20,17 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
+
+const storage = multer.diskStorage({
+  destination: (req, res, cb) => {
+    cb(null, 'image')
+  },
+  filename: (req, res, cb) => {
+    cb(null, Date.now() + '-' + res.originalname);
+  }
+});
+
+const upload = multer({storage: storage})
 
 // Getting users info
 app.get("/user", async (req, res) => {
@@ -33,14 +45,14 @@ app.get("/user", async (req, res) => {
 // authToken is a middleware to check if the user is authenticated
 // feel free to add or remove it from the routes
 
-app.get("/viewImages", getImages);
-app.get("/getMessages", authToken, getMsg);
-
 app.post("/signup", signup);
 app.post("/login", login);
-app.post("/addPhoto", addPhoto);
-app.post("/messages", createMessages);
 
-app.delete("/deleteImages", authToken, delImage);
+app.post("/messages", createMessages);
+app.get("/getMessages", getMsg);
+
+app.post("/addPhoto",  upload.single('imgUrl'), addPhoto);
+app.get("/viewImages", getImages);
+app.delete("/deleteImages/:id", delImage);
 
 connection({ app, port: process.env.PORT || 5000 });
