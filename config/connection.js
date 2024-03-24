@@ -3,10 +3,7 @@ const mongoose = require("mongoose");
 const connection = ({ app, port }) => {
   // connecting to monngoDB
   const dbUrl =
-    process.env.NODE_ENV === "production"
-      ? // make sure to remove this as it contains sensitive information (username:password)
-        "mongodb+srv://akalmin247:mishima247@blog-node-tuts.k4jgjws.mongodb.net/"
-      : "mongodb://localhost:27017/blog-node-tuts";
+    process.env.NODE_ENV = "mongodb+srv://akalmin247:mishima247@blog-node-tuts.k4jgjws.mongodb.net/";
   mongoose
     .connect(dbUrl, { autoIndex: true })
     .then(() => {
