@@ -30,12 +30,13 @@ app.get("/user", async (req, res) => {
   }
 });
 
-// authToken is a middleware to check if the user is authenticated
-// feel free to add or remove it from the routes
+app.get("/test", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 app.post("/signup", signup);
 app.post("/login", login);
-app.delete('/logout');
+app.delete("/logout");
 
 app.post("/messages", createMessages);
 app.get("/getMessages", authToken, getMsg);
