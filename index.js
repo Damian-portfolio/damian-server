@@ -12,6 +12,7 @@ const getMsg = require("./routes/getMessages");
 const delImage = require("./routes/delGallery");
 const connection = require("./config/connection");
 const authToken = require("./middleware/authToken");
+const getImage = require("./routes/getImage");
 
 //Getting our app
 const app = express();
@@ -40,6 +41,7 @@ app.delete("/logout");
 
 app.post("/messages", createMessages);
 app.get("/getMessages", authToken, getMsg);
+app.get("/images/:id", getImage);
 
 app.post("/addPhoto", authToken, addPhoto);
 app.get("/viewImages", getImages);

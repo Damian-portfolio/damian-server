@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const gallerySchema = new Schema({
-    imgUrl: {
-        type: String,
-        required: true,
-    }
-})
+  imgUrl: {
+    type: String,
+    required: true,
+  },
+});
 
-const Gallery = mongoose.model('Gallery', gallerySchema);
+const Gallery = mongoose.model("Gallery", gallerySchema);
 module.exports = Gallery;
