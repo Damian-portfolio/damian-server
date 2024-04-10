@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: `${__dirname}/../.env` });
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -13,6 +13,10 @@ const delImage = require("./routes/delGallery");
 const connection = require("./config/connection");
 const authToken = require("./middleware/authToken");
 const getImage = require("./routes/getImage");
+const multer = require("multer");
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 //Getting our app
 const app = express();
@@ -43,7 +47,7 @@ app.post("/messages", createMessages);
 app.get("/getMessages", authToken, getMsg);
 app.get("/images/:id", getImage);
 
-app.post("/addPhoto", authToken, addPhoto);
+app.post("/addPhoto", authToken, upload.single("imgUrl"), addPhoto);
 app.get("/viewImages", getImages);
 app.delete("/deleteImages/:id", authToken, delImage);
 
