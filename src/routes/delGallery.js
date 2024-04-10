@@ -4,12 +4,12 @@ const { deleteObject, getStorage, ref } = require("firebase/storage");
 const firebaseConfig = require("../config/firebaseConfig");
 
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
 
 const delImage = async (req, res) => {
   try {
+    const storage = getStorage(app);
     const imageId = req.params.id;
-
+    
     const image = await Gallery.findById(imageId);
     const imgUrl = image.imgUrl;
     const imgName = imgUrl.split("/").pop();
