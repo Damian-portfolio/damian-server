@@ -1,20 +1,9 @@
 const Gallery = require("../models/gallery");
-const { initializeApp } = require("firebase/app");
-const { deleteObject, getStorage, ref } = require("firebase/storage");
-const firebaseConfig = require("../config/firebaseConfig");
-
-const app = initializeApp(firebaseConfig);
 
 const delImage = async (req, res) => {
   try {
-    const storage = getStorage(app);
     const imageId = req.params.id;
     
-    const image = await Gallery.findById(imageId);
-    const imgUrl = image.imgUrl;
-    const imgName = imgUrl.split("/").pop();
-    const imgRef = ref(storage, `images/${imgName}`);
-    await deleteObject(imgRef);
     const deletedImg = await Gallery.findByIdAndDelete(imageId);
 
     if (!deletedImg)
