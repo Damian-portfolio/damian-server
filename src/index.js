@@ -20,10 +20,10 @@ const upload = multer({ storage });
 
 //Getting our app
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(cors());
 
 app.get("/", (req, res) => {
   res.redirect("https://www.damianglory.ca/");
