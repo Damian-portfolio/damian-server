@@ -25,6 +25,10 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.redirect("https://www.damianglory.ca/");
+});
+
 // Getting users info
 app.get("/user", async (req, res) => {
   try {

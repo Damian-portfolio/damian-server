@@ -35,7 +35,8 @@ const addGallery = async (req, res) => {
     });
   } catch (error) {
     console.log(error.message);
-    return failed("Internal server error", "Internal server error", 500);
+    // return failed("Internal server error", "Internal server error", 500);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
