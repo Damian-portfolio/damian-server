@@ -39,10 +39,6 @@ app.get("/user", async (req, res) => {
   }
 });
 
-app.get("/test", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
-
 app.post("/signup", signup);
 app.post("/login", login);
 app.delete("/logout");
@@ -57,4 +53,4 @@ app.delete("/deleteImages/:id", authToken, delImage);
 
 connection({ app, port: process.env.PORT || 5000 });
 
-module.exports = app
+// module.exports = app
