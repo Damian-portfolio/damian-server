@@ -1,4 +1,3 @@
-require("dotenv").config({ path: `${__dirname}/../.env` });
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -18,9 +17,9 @@ const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-//Getting our app
-app.use(cors());
-const app = express();
+const app = express(); // Initialize Express app first
+
+app.use(cors()); // Then apply CORS middleware
 
 app.use(express.json());
 app.use(morgan("dev"));
@@ -52,5 +51,3 @@ app.get("/viewImages", getImages);
 app.delete("/deleteImages/:id", authToken, delImage);
 
 connection({ app, port: process.env.PORT || 5000 });
-
-// module.exports = app
