@@ -19,8 +19,8 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 //Getting our app
-const app = express();
 app.use(cors());
+const app = express();
 
 app.use(express.json());
 app.use(morgan("dev"));
