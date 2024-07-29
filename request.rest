@@ -2,14 +2,14 @@ GET http://localhost:5000/user
 
 ### Signup
 
-POST http://localhost:5000/signup
+POST https://damian-backend.vercel.app/signup
 Content-Type: application/json
 
 {
-    "firstname": "Oladipupo",
-    "lastname": "Ajadi",
-    "email": "almin@gmail.com",
-    "password": "alminShot"
+    "firstname": "Damian",
+    "lastname": "Chidera",
+    "email": "chideralawrence500@gmail.com",
+    "password": "damianShot"
 }
 
 ### Login

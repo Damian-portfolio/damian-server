@@ -12,6 +12,9 @@ const delImage = require("./routes/delGallery");
 const connection = require("./config/connection");
 const authToken = require("./middleware/authToken");
 const getImage = require("./routes/getImage");
+const postAdvert = require('./routes/postAds');
+const getAdvert = require('./routes/getAds');
+const delAdvert = require('./routes/delAds');
 const multer = require("multer");
 
 const storage = multer.memoryStorage();
@@ -49,5 +52,9 @@ app.get("/images/:id", getImage);
 app.post("/addPhoto", authToken, upload.single("imgUrl"), addPhoto);
 app.get("/viewImages", getImages);
 app.delete("/deleteImages/:id", authToken, delImage);
+
+app.post('/postAd', authToken, postAdvert);
+app.get('/getAd', getAdvert);
+app.delete('/delAd/:id', authToken, delAdvert);
 
 connection({ app, port: process.env.PORT || 5000 });

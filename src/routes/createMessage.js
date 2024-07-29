@@ -1,5 +1,4 @@
 const Messages = require("../models/message");
-const nodeMailer = require("nodemailer");
 
 const sendMessage = async (req, res) => {
   try {
